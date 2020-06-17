@@ -25,10 +25,12 @@ body {
     @include margin-padding-zero;
     background-image: url("../img/chinese-wallpa.png");
     background-repeat: repeat;
-    .body-container {
+    .container {
         height: 100vh;
+        width: 100%;
         max-width: 1280px;
         margin: 0 auto;
+        padding: 0;
         .header-container {
             position: fixed;
             width: 100%;
@@ -36,87 +38,154 @@ body {
             .header {
                 position: relative;
                 max-width: 1280px;
-                .header-navbar {
-                    height: 110px;
-                    padding: 0;
-                    margin: 0;
+                .background-image {
+                    min-height: 110px;
                     background: no-repeat url('../img/header-background.png');
                     background-size: cover;
-                    button {
-                        border: none;
-                        outline: none !important;
+                    .header-navbar {
+                        @include margin-padding-zero;
+                        button {
+                            // margin: 35px 0 0 10px;
+                            border: none;
+                            outline: none !important;
+                        }
+                        .burger-menu:active {
+                            top: 3px;
+                        }
+                        .burger-menu {
+                            height: 30px;
+                            width: 40px;
+                            position: relative;
+                            left: 10px;
+                            top: 0px;
+                            @include margin-padding-zero;
+                            list-style: none;
+                            cursor: pointer;
+                            z-index: 4;
+                            .burger-line {
+                                position: absolute;
+                                height: 5px;
+                                width: 40px;
+                                background-color: #000;
+                                transition: ease-in-out 0.2s;
+                                border-radius: 10px;
+                                transform: translate(0, -50%);
+                            }
+                            .burger-line-one {
+                                top: 0;
+                            }
+                            .burger-line-two {
+                                top: 10px;
+                                opacity: 1;
+                            }
+                            .burger-line-three {
+                                top: 20px;
+                            }
+                        }
+                        .burger-menu-open {
+                            .burger-line-one {
+                                animation: buger-top 0.3s  0.2s  forwards;
+                            }
+                            .burger-line-two {
+                                opacity: 0;
+                            }
+                            .burger-line-three {
+                                animation: buger-bottom 0.3s  0.2s  forwards;
+                            }
+                            @keyframes buger-top {
+                                0% {top: 0px;}
+                                50% {top: 10px; transform: rotate(0deg)}
+                                100% {top: 10px; transform: rotate(45deg);}
+                            }
+                            @keyframes buger-bottom {
+                                0% {top: 20px;}
+                                50% {top: 10px; transform: rotate(0deg)}
+                                100% {top: 10px; transform: rotate(-45deg);}
+                            }
+                        }
+                        .header-links {
+                            margin: 20px 20px;
+                            a {
+                                font-size: 0.9rem;
+                                font-weight: bold;
+                                color: $headerMenuLink;
+                                text-transform: uppercase;
+                            }
+                        }
                     }
-                    .header-links {
-                        margin: 0 20px;
-                        a {
-                            font-size: 0.9rem;
+                    .header-logo {
+                        position: absolute;
+                        margin-left: 100px;
+                        top: 25px;
+                
+                    }
+                
+                    .lang-button {
+                        position: absolute;
+                        top: 40px;
+                        right: 90px;
+                        cursor: pointer;
+                        p {
+                            margin-top: 5px;
                             font-weight: bold;
                             color: $headerMenuLink;
-                            text-transform: uppercase;
+                        }
+                        
+                        button:hover {
+                            background-color: $langButtonBackgroundHover;
+                        }
+                    }
+    
+                    @media screen and (max-width: 767px) {
+                        .header-navbar {
+                            .header-links {
+                                a {
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        }
+                        .header-logo {
+                            margin: 0;
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                        }
+                        .lang-button {
+                            right: 15px;
                         }
                     }
                 }
-                .header-logo {
-                    position: absolute;
-                    margin-left: 100px;
-                    top: 25px;
-            
-                }
-            
-                .lang-button {
-                    position: absolute;
-                    top: 40px;
-                    right: 90px;
-                    cursor: pointer;
-                    // button {
-                    //     padding: 3px 18px;
-                    //     text-decoration: none;
-                    //     outline: none;
-                    //     border-radius: 6px;
-                    //     border: none;
-                    //     background-color: $langButtonBackground;
-                    //     color: $langButtonText;
-                    //     font-size: 0.9rem;
-                    //     font-weight: bold;
-                    // }
-                    button:hover {
-                        background-color: $langButtonBackgroundHover;
-                    }
-                }
-
-                @media screen and (max-width: 767px) {
-                    .header-logo {
-                        margin: 0;
-                        left: 50%;
-                        transform: translate(-50%, 0);
-                    }
-                    .lang-button {
-                        right: 15px;
-                    }
-                }
+                
             }        
         }
 
-        .body-container {
+        .body-section-container {
             position: relative;
-            .body-main {
-                background: no-repeat url('../img/home-body-background.png') fixed;
-                background-size: cover;
+            .body-main-container {
+                position: relative;
                 height: 100vh;
                 max-width: 1280px;
-                margin: 0 auto;
-                z-index: 0;
-                .first-section {
-                    position: absolute;
-                    height: 100%;
+                .body-main {
+                    position: fixed;
+                    background: no-repeat url('../img/home-body-background.png') fixed;
+                    background-size: cover;
+                    height: 100vh;
                     width: 100%;
-                    background-color: rgba(120, 13, 13, 0.75);
+                    max-width: 1280px;
+                    margin: 0 auto;
+                    z-index: 0;
+                    .red-screen {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        background-color: rgba(120, 13, 13, 0.75);
+                        
+                    }
                     .body-slogan-container {
                         position: relative;
                         // height: 300px;
                         width: 100%;
                         max-width: 1280px;
-                        margin: 200px 0 50px;
+                        margin: 200px 0 10px;
                         display: flex;
                         align-items: center;
                         text-align: center;
@@ -129,44 +198,41 @@ body {
                         margin: 0;
                         display: flex;
                         justify-content: center;
-                        button {
-                            position: relative;
-                            margin: 0 auto;
+                        a {
                             width: 200px;
-                            padding: 8px 18px;
-                            text-decoration: none;
-                            outline: none;
-                            border-radius: 6px;
-                            border: none;
-                            background-color: $orderButtonBackground;
-                            color: $orderButtonText;
-                            font-size: 0.9rem;
-                            font-weight: bold;
+                            position: relative;
+                            margin: 0 auto;    
+                            button {
+                                margin: 0;
+                                font-size: 0.9rem;
+                                font-weight: bold;
+                            }
                         }
                         button:hover {
                             background-color: $orderButtonBackgroundHover;
                         }
                     }
-                }
-                
-                .body-congee-container {
-                    position: absolute;
-                    bottom: 0;
-                    height: 100%;
-                    width: 100%;
-                    pointer-events: none;
-                    .body-congee {
-                        position: relative;
-                        background: no-repeat url('../img/congee.png') center bottom fixed;
-                        background-size: auto;
+                    
+                    .body-congee-container {
+                        position: absolute;
+                        bottom: 0;
                         height: 100%;
                         width: 100%;
+                        pointer-events: none;
+                        .body-congee {
+                            position: relative;
+                            background: no-repeat url('../img/congee.png') center bottom;
+                            background-size: auto;
+                            height: 100%;
+                            width: 100%;
+                        }
                     }
                 }
             }
+            
             .second-section-container {
                 @include margin-padding-zero;
-                height: 700px;
+                height: 800px;
                 background-color: #fff;
                 z-index: 1;
                 .second-section-text {
@@ -190,7 +256,7 @@ body {
             }
             .third-section-container {
                 @include margin-padding-zero;
-                height: 700px;
+                height: 800px;
                 background-color: #fff;
                 z-index: 1;
                 .third-section-text {
@@ -213,6 +279,7 @@ body {
                 }
             }
             .footer {
+                position: relative;
                 @include margin-padding-zero;
                 height: 150px;
                 max-width: 1280px;

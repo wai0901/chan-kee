@@ -1,0 +1,303 @@
+$langButtonBackground: #8D392F;
+$langButtonBackgroundHover: #65261E;
+$langButtonText: #fff;
+$orderButtonBackground: #ffc609;
+$orderButtonBackgroundHover: #ce9f06;
+$orderButtonText: #3a3a3a;
+$headerMenuLink: #3a3a3a;
+$socialIconsButton: #3a3a3a;
+$socialIconsButtonHover: #6e6e6e;
+$rememberMeCheckBox: #fff;
+
+@mixin background-cover {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@mixin margin-padding-zero {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    @include margin-padding-zero;
+    background-image: url("../img/chinese-wallpa.png");
+    background-repeat: repeat;
+    .container {
+        height: 100vh;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0;
+        .header-container {
+            position: fixed;
+            width: 100%;
+            z-index: 3;
+            .header {
+                position: relative;
+                max-width: 1280px;
+                .background-image {
+                    min-height: 110px;
+                    background: no-repeat url('../img/header-background.png');
+                    background-size: cover;
+                    .header-navbar {
+                        @include margin-padding-zero;
+                        button {
+                            border: none;
+                            outline: none !important;
+                        }
+                        .burger-menu:active {
+                            top: 3px;
+                        }
+                        .burger-menu {
+                            height: 30px;
+                            width: 40px;
+                            position: relative;
+                            left: 10px;
+                            top: 0px;
+                            @include margin-padding-zero;
+                            list-style: none;
+                            cursor: pointer;
+                            z-index: 4;
+                            .burger-line {
+                                position: absolute;
+                                height: 5px;
+                                width: 40px;
+                                background-color: #000;
+                                transition: ease-in-out 0.2s;
+                                border-radius: 10px;
+                                transform: translate(0, -50%);
+                            }
+                            .burger-line-one {
+                                top: 0;
+                            }
+                            .burger-line-two {
+                                top: 10px;
+                                opacity: 1;
+                            }
+                            .burger-line-three {
+                                top: 20px;
+                            }
+                        }
+                        .burger-menu-open {
+                            .burger-line-one {
+                                animation: buger-top 0.3s  0.2s  forwards;
+                            }
+                            .burger-line-two {
+                                opacity: 0;
+                            }
+                            .burger-line-three {
+                                animation: buger-bottom 0.3s  0.2s  forwards;
+                            }
+                            @keyframes buger-top {
+                                0% {top: 0px;}
+                                50% {top: 10px; transform: rotate(0deg)}
+                                100% {top: 10px; transform: rotate(45deg);}
+                            }
+                            @keyframes buger-bottom {
+                                0% {top: 20px;}
+                                50% {top: 10px; transform: rotate(0deg)}
+                                100% {top: 10px; transform: rotate(-45deg);}
+                            }
+                        }
+                        .header-links {
+                            margin: 20px 20px;
+                            a {
+                                font-size: 0.9rem;
+                                font-weight: bold;
+                                color: $headerMenuLink;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                    .header-logo {
+                        position: absolute;
+                        margin-left: 100px;
+                        top: 25px;
+                
+                    }
+                
+                    .checkout-button {
+                        position: absolute;
+                        top: 40px;
+                        right: 90px;
+                        button {
+                            font-weight: bold;
+                        }
+                    }
+    
+                    @media screen and (max-width: 767px) {
+                        .header-navbar {
+                            .header-links {
+                                a {
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        }
+                        .header-logo {
+                            margin: 0;
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                        }
+                        .lang-button {
+                            right: 15px;
+                        }
+                    }
+                }
+                
+            }        
+        }
+
+        .body-section-container {
+            position: relative;
+            top: 110px;
+            min-height: 825px;
+            max-width: 1280px;
+            .body-main {
+                background: no-repeat url('../img/home-body-background.png') fixed;
+                background-size: cover;
+                width: 100%;
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 0;
+                z-index: 0;
+                .cartTotal {
+                    position: fixed;
+                    width: 100%;
+                    max-width: 1280px;
+                    text-align: center;
+                    padding: 10px 0;
+                    background-color:rgba(66, 18, 18, 0.7);
+                    z-index: 3;
+                    h2 {
+                        font-weight: bold;
+                        color: #fff;
+                    }
+                }
+                .red-screen {
+                    min-height: 715px;
+                    width: 100%;
+                    padding: 70px 0 10px;
+                    background-color: rgba(120, 13, 13, 0.75);
+                    .menu-items-container {
+                        margin: 0 auto;
+                        width: 100%;
+                        max-width: 800px;
+                        .menu-item {
+                            position: relative;
+                            margin: 10px auto;
+                            padding: 0;
+                            height: 300px;
+                            width: 90%;
+                            border-radius: 10px;
+                            background-color: rgba(255, 246, 206, 0.7);
+                            overflow: hidden;
+                            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+                            .image {
+                                height: 300px;
+                                width: 100%;
+                                padding: 0;
+                                overflow: hidden;
+                                border-radius: 10px;
+                            }
+                            .item-info-container {
+                                @include margin-padding-zero;
+                                position: relative;
+                                div > p {
+                                    @include margin-padding-zero;
+                                }
+                                .item-info {
+                                    height: 150px;
+                                    position: relative;
+                                    top: 40px;
+                                    padding-left: 20px;
+                                    .item-price {
+                                        font-size: 1.1rem;
+                                        font-weight: bold;
+                                    }
+                                    .item-description {
+                                        margin-top: 10px;
+                                        font-size: 0.9rem;
+                                        line-height: 1.1rem;
+                                    }
+                                }
+                                form {
+                                    margin-top: 50px;
+                                    width: 100%;
+                                    max-width: 200px;
+                                    .form-container {
+                                        padding: 0 10px;
+                                        height: 20px;
+                                        button {
+                                            position: relative;
+                                            padding: 7px 20px;
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+            .footer {
+                position: relative;
+                @include margin-padding-zero;
+                height: 150px;
+                max-width: 1280px;
+                background: no-repeat url('../img/footer-background.png');
+                background-size: cover;
+                .footer-contents {
+                    width: 100%;
+                    @include margin-padding-zero;
+                    button {
+                        margin: 20px 0 0 100px;
+                        padding: 8px 60px;
+                        text-decoration: none;
+                        outline: none;
+                        border-radius: 6px;
+                        border: none;
+                        background-color: $langButtonBackground;
+                        color: $langButtonText;
+                        font-size: 0.9rem;
+                        font-weight: bold;
+                    }
+                    button:hover {
+                        background-color: $langButtonBackgroundHover;
+                    }
+                    p {
+                        margin-top: 100px;
+                        font-size: 0.9rem;
+                    }
+                    a {
+                        font-size: 1.5rem;
+                        list-style: none;
+                        margin: 0 10px;
+                        color: $socialIconsButton;
+                    }
+                    a:hover {
+                        color: $socialIconsButtonHover;
+                    }
+                }
+                .copyright {
+                    text-align: center;
+                }
+                .social-icons {
+                    margin: 20px 0;
+                    div {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-right: 100px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

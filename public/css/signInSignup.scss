@@ -1,0 +1,280 @@
+$langButtonBackground: #8D392F;
+$langButtonBackgroundHover: #65261E;
+$langButtonText: #fff;
+$orderButtonBackground: #ffc609;
+$orderButtonBackgroundHover: #ce9f06;
+$orderButtonText: #3a3a3a;
+$headerMenuLink: #3a3a3a;
+$socialIconsButton: #3a3a3a;
+$socialIconsButtonHover: #6e6e6e;
+$rememberMeCheckBox: #fff;
+
+@mixin background-cover {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@mixin margin-padding-zero {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    @include margin-padding-zero;
+    background-image: url("../img/chinese-wallpa.png");
+    background-repeat: repeat;
+    .container {
+        height: 100vh;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0;
+        .header-container {
+            position: fixed;
+            width: 100%;
+            z-index: 3;
+            .header {
+                position: relative;
+                max-width: 1280px;
+                .background-image {
+                    min-height: 110px;
+                    background: no-repeat url('../img/header-background.png');
+                    background-size: cover;
+                    .header-navbar {
+                        @include margin-padding-zero;
+                        button {
+                            border: none;
+                            outline: none !important;
+                        }
+                        .burger-menu:active {
+                            top: 3px;
+                        }
+                        .burger-menu {
+                            height: 30px;
+                            width: 40px;
+                            position: relative;
+                            left: 10px;
+                            top: 0px;
+                            @include margin-padding-zero;
+                            list-style: none;
+                            cursor: pointer;
+                            z-index: 4;
+                            .burger-line {
+                                position: absolute;
+                                height: 5px;
+                                width: 40px;
+                                background-color: #000;
+                                transition: ease-in-out 0.2s;
+                                border-radius: 10px;
+                                transform: translate(0, -50%);
+                            }
+                            .burger-line-one {
+                                top: 0;
+                            }
+                            .burger-line-two {
+                                top: 10px;
+                                opacity: 1;
+                            }
+                            .burger-line-three {
+                                top: 20px;
+                            }
+                        }
+                        .burger-menu-open {
+                            .burger-line-one {
+                                animation: buger-top 0.3s  0.2s  forwards;
+                            }
+                            .burger-line-two {
+                                opacity: 0;
+                            }
+                            .burger-line-three {
+                                animation: buger-bottom 0.3s  0.2s  forwards;
+                            }
+                            @keyframes buger-top {
+                                0% {top: 0px;}
+                                50% {top: 10px; transform: rotate(0deg)}
+                                100% {top: 10px; transform: rotate(45deg);}
+                            }
+                            @keyframes buger-bottom {
+                                0% {top: 20px;}
+                                50% {top: 10px; transform: rotate(0deg)}
+                                100% {top: 10px; transform: rotate(-45deg);}
+                            }
+                        }
+                        .header-links {
+                            margin: 20px 20px;
+                            a {
+                                font-size: 0.9rem;
+                                font-weight: bold;
+                                color: $headerMenuLink;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                    .header-logo {
+                        position: absolute;
+                        margin-left: 100px;
+                        top: 25px;
+                
+                    }
+                
+                    .lang-button {
+                        position: absolute;
+                        top: 40px;
+                        right: 90px;
+                        cursor: pointer;
+                        p {
+                            margin-top: 5px;
+                            font-weight: bold;
+                            color: $headerMenuLink;
+                        }
+                        
+                        button:hover {
+                            background-color: $langButtonBackgroundHover;
+                        }
+                    }
+    
+                    @media screen and (max-width: 767px) {
+                        .header-navbar {
+                            .header-links {
+                                a {
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        }
+                        .header-logo {
+                            margin: 0;
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                        }
+                        .lang-button {
+                            right: 15px;
+                        }
+                    }
+                }
+                
+            }        
+        }
+
+        .body-section-container {
+            position: relative;
+            .body-main-container {
+                position: relative;
+                height: 825px;
+                max-width: 1280px;
+                .body-main {
+                    position: fixed;
+                    background: no-repeat url('../img/home-body-background.png') fixed;
+                    background-size: cover;
+                    height: 100vh;
+                    width: 100%;
+                    max-width: 1280px;
+                    margin: 0 auto;
+                    z-index: 0;
+                    .red-screen {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        background-color: rgba(120, 13, 13, 0.75);
+                        
+                    }
+                    .form-signin {
+                        position: relative;
+                        width: 100%;
+                        max-width: 330px;
+                        padding: 15px;
+                        margin: 200px auto;
+                        .form-spacer {
+                            margin: 25px 0;
+                        }
+                        h1 {
+                            color: #fff;
+                            text-transform: uppercase;
+                        }
+                        .checkbox {
+                            font-weight: 400;
+                            color: $rememberMeCheckBox;
+                        }
+                        .form-control {
+                            position: relative;
+                            box-sizing: border-box;
+                            height: auto;
+                            margin: 10px 0;
+                            padding: 5px 10px;
+                            font-size: 16px;
+                        }
+                        .form-control:focus {
+                            z-index: 2;
+                        }
+                        .signup-container {
+                            width: 100%;
+                            justify-content: center;
+                            text-align: center;
+                            a {
+                                list-style: none;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+            .footer {
+                position: relative;
+                @include margin-padding-zero;
+                height: 150px;
+                max-width: 1280px;
+                background: no-repeat url('../img/footer-background.png');
+                background-size: cover;
+                .footer-contents {
+                    width: 100%;
+                    @include margin-padding-zero;
+                    button {
+                        margin: 20px 0 0 100px;
+                        padding: 8px 60px;
+                        text-decoration: none;
+                        outline: none;
+                        border-radius: 6px;
+                        border: none;
+                        background-color: $langButtonBackground;
+                        color: $langButtonText;
+                        font-size: 0.9rem;
+                        font-weight: bold;
+                    }
+                    button:hover {
+                        background-color: $langButtonBackgroundHover;
+                    }
+                    p {
+                        margin-top: 100px;
+                        font-size: 0.9rem;
+                    }
+                    a {
+                        font-size: 1.5rem;
+                        list-style: none;
+                        margin: 0 10px;
+                        color: $socialIconsButton;
+                    }
+                    a:hover {
+                        color: $socialIconsButtonHover;
+                    }
+                }
+                .copyright {
+                    text-align: center;
+                }
+                .social-icons {
+                    margin: 20px 0;
+                    div {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-right: 100px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
