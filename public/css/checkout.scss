@@ -8,6 +8,7 @@ $headerMenuLink: #3a3a3a;
 $socialIconsButton: #3a3a3a;
 $socialIconsButtonHover: #6e6e6e;
 $rememberMeCheckBox: #fff;
+$editInfoLink: rgb(223, 65, 65);
 
 @mixin background-cover {
     -webkit-background-size: cover;
@@ -120,19 +121,12 @@ body {
                 
                     }
                 
-                    .lang-button {
+                    .checkout-button {
                         position: absolute;
                         top: 40px;
                         right: 90px;
-                        cursor: pointer;
-                        p {
-                            margin-top: 5px;
+                        button {
                             font-weight: bold;
-                            color: $headerMenuLink;
-                        }
-                        
-                        button:hover {
-                            background-color: $langButtonBackgroundHover;
                         }
                     }
     
@@ -160,64 +154,133 @@ body {
 
         .body-section-container {
             position: relative;
-            .body-main-container {
-                position: relative;
-                min-height: 825px;
+            top: 110px;
+            min-height: 825px;
+            max-width: 1280px;
+            .body-main {
+                background: no-repeat url('../img/home-body-background.png') fixed;
+                background-size: cover;
+                width: 100%;
                 max-width: 1280px;
-                .body-main {
+                margin: 0 auto;
+                padding: 0;
+                z-index: 0;
+                .cartTotal {
                     position: fixed;
-                    background: no-repeat url('../img/home-body-background.png') fixed;
-                    background-size: cover;
-                    height: 100vh;
                     width: 100%;
                     max-width: 1280px;
-                    margin: 0 auto;
-                    z-index: 0;
-                    .red-screen {
-                        position: absolute;
-                        height: 100%;
-                        width: 100%;
-                        background-color: rgba(120, 13, 13, 0.75);
-                        
+                    text-align: center;
+                    padding: 10px 0;
+                    background-color:rgba(66, 18, 18, 0.7);
+                    z-index: 3;
+                    h2 {
+                        font-weight: bold;
+                        color: #ccc;
                     }
-                    .form-signin {
-                        position: relative;
+                }
+                .red-screen {
+                    min-height: 715px;
+                    width: 100%;
+                    padding: 80px 0 10px;
+                    background-color: rgba(120, 13, 13, 0.75);
+                    .checkout-container {
+                        margin: 0 auto;
+                        height: 100%;
+                        min-height: 600px;;
                         width: 100%;
-                        max-width: 330px;
-                        padding: 15px;
-                        margin: 120px auto;
-                        .form-spacer {
-                            margin: 20px 0;
+                        max-width: 850px;
+                        background-color: #eee;
+                        border-radius: 10px;
+                        div {
+                            padding: 0;
                         }
-                        .title-container {
-                            text-align: center;
-                            h1 {
-                                color: #fff;
-                                text-transform: uppercase;
-                            }
-                        }
-                        .checkbox {
-                            font-weight: 400;
-                            color: $rememberMeCheckBox;
-                        }
-                        .form-control {
-                            position: relative;
-                            box-sizing: border-box;
-                            height: auto;
-                            margin: 10px 0;
-                            padding: 5px 10px;
-                            font-size: 16px;
-                        }
-                        .form-control:focus {
-                            z-index: 2;
-                        }
-                        .signup-container {
+                        .checkoutInfo-container {
+                            margin-top: 30px;
+                            height: 100%;
                             width: 100%;
-                            justify-content: center;
-                            text-align: center;
-                            a {
-                                list-style: none;
-                                color: #fff;
+                            .borderLine {
+                                border-bottom: 1px solid #999;
+                            }
+                            .fontBold {
+                                font-weight: bold;
+                                padding-bottom: 10px;
+                            }
+                            .largeFont {
+                                font-size: 1.3rem;
+                            }
+                            .checkout-items-list {
+                                height: 100%;
+                                min-height: 30px;
+                                width: 80%;
+                                position: relative;
+                                margin: 5px auto 0;
+                                text-align: end;
+                                .checkout-item {
+                                    position: relative;
+                                    margin: 0 auto;
+                                    p {
+                                        margin: 3px 0;
+                                        padding: 0;
+                                    }
+                                }
+                            }
+                            .checkout-customer {
+                                height: 100%;
+                                width: 100%;
+                                @include margin-padding-zero;
+                                .contact-info {
+                                    height: 190px;
+                                    margin: 10px;
+                                    background-color: #fff;
+                                    border-radius: 5px;
+                                    border: 1px solid #dcdcdc;
+                                    div {
+                                        @include margin-padding-zero;
+                                        position: relative;
+                                        left: 20px;
+                                    }
+                                    p {
+                                        @include margin-padding-zero;
+                                        font-size: 0.9rem;
+                                    }
+                                    h6 {
+                                        font-size: 1.1rem;
+                                        font-weight: bold;
+                                    }
+                                    a {
+                                        font-weight: bold;
+                                        font-size: 0.8rem;
+                                        color: $editInfoLink;
+                                    }
+                                }
+                            }
+                            .checkout-card-info {
+                                height: 100%;
+                                width: 93%;
+                                @include margin-padding-zero;
+                                .form-container {
+                                    margin: 0 10px;
+                                    border-top: 1px solid #999;
+                                    .field-container {
+                                        @include margin-padding-zero;
+                                        label {
+                                            margin: 5px 0 0;
+                                            padding-top: 5px;
+                                            font-size: 13px;
+                                        }
+                                        input {
+                                            margin-top: 3px;
+                                            padding: 7px 5px;
+                                            font-size: 16px;
+                                            width: 100%;
+                                            border-radius: 3px;
+                                            border: 1px solid #dcdcdc;
+                                        }
+                                        .expirationAndSecurity {
+                                            width: 95%;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

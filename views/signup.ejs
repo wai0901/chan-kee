@@ -31,20 +31,42 @@
                             <div class="form-spacer">
                                 <label for="lastName" class="sr-only">Last name</label>
                                 <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last name" required autofocus>
+                                
                                 <label for="firstName" class="sr-only">first name</label>
                                 <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First name" required autofocus>
                             </div>
                             <div class="form-spacer">
-                                <label for="username" class="sr-only">Username</label>
-                                <input type="text" id="username" name="userName" class="form-control" placeholder="Username" required autofocus>
+                                <label for="street" class="sr-only">street</label>
+                                <input type="text" id="street" name="street" class="form-control" placeholder="Apartment, suite, building, etc." required autofocus>
+                                
+                                <label for="city" class="sr-only">city</label>
+                                <input type="text" id="city" name="city" class="form-control" placeholder="City" required autofocus>
+                                <div class="row">
+                                    <div class="col-3 pr-0">
+                                        <label for="state" class="sr-only">state</label>
+                                        <input type="text" id="state" name="state" class="form-control my-0" placeholder="State" required autofocus>
+                                    </div>
+                                    <div class="col-3 px-2">
+                                        <label for="zip" class="sr-only">zip</label>
+                                        <input type="text" id="zip" name="zip" class="form-control my-0" placeholder="Zip" required autofocus>
+                                    </div>
+                                    <div class="col-6 pl-0">
+                                        <label for="tel" class="sr-only">tel</label>
+                                        <input type="tel" id="tel" name="tel" class="form-control my-0" pattern="[0-9]{10}" placeholder="Phone number" required autofocus>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-spacer">
+                                <label for="username" class="sr-only">Username</label>
+                                <input type="text" id="username" name="userName" class="form-control" placeholder="Username" required autofocus>
+                                
                                 <label for="email" class="sr-only">Email address</label>
                                 <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+                                
+                                <label for="password" class="sr-only">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
-                            <label for="password" class="sr-only">Password</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-                            <div class="checkbox mb-3">
+                            <div class="checkbox mb-1">
                                 <label>
                                     <input type="checkbox" name="promotion" value="true"> Receive latest promotion
                                 </label>

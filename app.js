@@ -8,6 +8,7 @@ const signupRouter = require('./routes/signup');
 const orderRouter = require('./routes/order');
 const cartRouter = require('./routes/cart');
 
+
 // const mongoose = require('mongoose');
 
 // const url = 'mongodb://localhost:27017/chankee';
@@ -30,6 +31,10 @@ app.use('/signin', signinRouter);
 app.use('/signup', signupRouter);
 app.use('/order', orderRouter);
 app.use('/cart', cartRouter);
+app.use('/cart/checkout', cartRouter);
+app.use('/cart/editBillingInfo', cartRouter);
+app.use('/cart/editDeliveryInfo', cartRouter);
+
 
 // app.use(logger('dev'));
 

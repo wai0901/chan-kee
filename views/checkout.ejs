@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkout</title>
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/checkout.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <section class="header-container">
+                <div class="header">
+                    <div class="background-image">
+                        <nav class="header-navbar navbar navbar-light navbar-expand-md justify-content-md-center justify-content-start">
+                        
+                            <!-- Burger menu icon-->
+                            <button class="navbar-toggler mt-5" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <ul id="burger-menu" class="burger-menu">
+                                    <li class="burger-line burger-line-one"></li>
+                                    <li class="burger-line burger-line-two"></li>
+                                    <li class="burger-line burger-line-three"></li>
+                                </ul>
+                            </button>
+                
+                            <!-- Navbar links -->
+                            <div class="collapse navbar-collapse justify-content-between align-items-center w-100" id="navbarNav">
+                                <ul class="navbar-nav mt-md-3 mt-5 mb-md-0 mb-5 mx-auto text-md-center text-left">
+                                    <li class="nav-item header-links">
+                                        <a class="nav-link" href="/order">order</a> 
+                                    </li>
+                                    <li class="nav-item header-links">
+                                        <a class="nav-link" href="/">menu</a>
+                                    </li>
+                                    <li class="nav-item header-links">
+                                        <a class="nav-link" href="/">location</a> 
+                                    </li>
+                                    <li class="nav-item header-links">
+                                        <a class="nav-link" href="/">about</a> 
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        </nav>
+                
+                        <!-- Chan Kee logo -->
+                        <div class="header-logo">
+                            <a href="/">
+                                <svg width="56px" height="58px" href="#">
+                                    <image xlink:href="/img/chan_kee_header_logo.svg" x="0" y="0" width="56px" height="58px"></image>
+                                </svg>
+                            </a>
+                        </div>
+                
+                        <!-- Checkout button -->
+                        <div class="checkout-button">
+                            <a href="/cart"><button class="btn btn-dark btn-sm">Back</button></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>  <!-- <-- header-container -->
+
+            <!-- Body contents -->
+            <section class="body-section-container">
+                <div class="body-main-container">
+                    <div class="body-main">
+                        <div class="cartTotal">
+                            <h2>Checkout</h2>
+                        </div>
+                        <!-- red screen for the background -->
+                        <div class="red-screen">
+                            <div class="row checkout-container">
+                                <div class="col-6 checkoutInfo-container">
+                                    <div class="col checkout-items-list borderLine">
+                                        <% newOrder.cartItems.forEach(item => { %> 
+                                            <div class="row checkout-item">
+                                                <div class="col-6">
+                                                    <p><%= item.title %></p>
+                                                </div>
+                                                <div class="col-3">
+                                                    <p>Qty: <%= item.itemQty %></p>
+                                                </div>
+                                                <div class="col-3">
+                                                    <p>$<%= (Number(item.price) * Number(item.itemQty)).toFixed(2) %></p>
+                                                </div>
+                                            </div>
+                                        <% }) %>
+                                    </div>
+                                    <div class="col checkout-items-list fontBold">
+                                        <div class="row checkout-item">
+                                            <div class="col-6"></div>
+                                            <div class="col-3"></div>
+                                            <div class="col-3">
+                                                <p>$ <%= newOrder? newOrder.total: "0.00" %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col checkout-items-list">
+                                        <div class="row checkout-item">
+                                            <div class="col-6">
+                                                <p>Estimated Sales Tax</p>
+                                            </div>
+                                            <div class="col-3"></div>
+                                            <div class="col-3">
+                                                <p>$ <%= newOrder? newOrder.tax: "0.00" %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col checkout-items-list  borderLine">
+                                        <div class="row checkout-item">
+                                            <div class="col-6">
+                                                <p>Delivery Fee</p>
+                                            </div>
+                                            <div class="col-3"></div>
+                                            <div class="col-3">
+                                                <p>$ <%= newOrder? newOrder.deliveryFee: "0.00" %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col checkout-items-list fontBold">
+                                        <div class="row checkout-item largeFont">
+                                            <div class="col-6"></div>
+                                            <div class="col-3">
+                                                <p>Total</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p>$ <%= newOrder.grandTotal %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 checkoutInfo-container">
+                                    <div class="row checkout-customer">
+                                        <div class="col-5 contact-info">
+                                            <div class="my-2">
+                                                <h6>Billing Info</h6>
+                                            </div>
+                                            <div>
+                                                <p><%= newOrder.customer.firstName %> <%= newOrder.customer.lastName %></p>
+                                                <p class="mt-2"><%= newOrder.customer.email %></p>
+                                                <p><%= newOrder.customer.tel %></p>
+                                                <p class="mt-2"><%= newOrder.customer.street %>,</p>
+                                                <p><%= newOrder.customer.city %>, <%= newOrder.customer.zip %></p>
+                                            </div>
+                                            <div class="mt-1">
+                                                <a href="editBillingInfo">Edit</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 contact-info">
+                                            <div class="my-2">
+                                                <h6>Delivery Info</h6>
+                                            </div>
+                                            <div>
+                                                <p><%= newOrder.customer.firstName %> <%= newOrder.customer.lastName %></p>
+                                                <p class="mt-2"><%= newOrder.customer.email %></p>
+                                                <p><%= newOrder.customer.tel %></p>
+                                                <p class="mt-2"><%= newOrder.customer.street %>,</p>
+                                                <p><%= newOrder.customer.city %>, <%= newOrder.customer.zip %></p>
+                                            </div>
+                                            <div class="mt-1">
+                                                <a href="editDeliveryInfo">Edit</a>
+                                            </div>
+                                        </div>                                
+                                    </div>
+                                    <div class="row mt-3 checkout-card-info">
+                                        <form class="form-container" action="checkout" method="POST">
+                                            <div class="col field-container">
+                                                <label for="name">Name</label>
+                                                <input id="name" name="name" maxlength="20" type="text" required>
+                                            </div>
+                                            <div class="col field-container">
+                                                <label for="cardnumber">Card Number</label>
+                                                <input id="cardnumber" name="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric" required>
+                                            </div>
+                                            <div class="row field-container">
+                                                <div class="col-6">
+                                                    <label for="expirationdate">Expiration (mm/yy)</label>
+                                                    <input class="expirationAndSecurity" name="expirationdate" id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" required>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="ml-2" for="securitycode">Security Code</label>
+                                                    <input class="ml-2 expirationAndSecurity" name="securitycode" id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" required>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4 field-container">
+                                                <div class="col-6">
+                                                    <i class="fab fa-cc-visa fa-2x"></i>
+                                                    <i class="fab fa-cc-mastercard fa-2x"></i>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn btn-md btn-success btn-block submit-button" type="submit">Place Order</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div> 
+                    </div>
+                </div> <!-- <-- body-main-container -->
+            
+                <!-- Footer -->
+                <%- include('./partial-views/_footer') %>
+
+            </section> 
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <script src="js/scripts.js"></script>
+    </body>
+
+</html>
